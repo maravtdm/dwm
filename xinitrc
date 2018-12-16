@@ -6,19 +6,15 @@ sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 # merge in defaults and keymaps
-
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
 fi
-
 if [ -f $sysmodmap ]; then
     xmodmap $sysmodmap
 fi
-
 if [ -f $userresources ]; then
     xrdb -merge $userresources
 fi
-
 if [ -f $usermodmap ]; then
     xmodmap $usermodmap
 fi
@@ -30,53 +26,44 @@ fi
  
 ## Statusbar
 sp="$(echo -ne " ")"
-sp1="$(echo -ne " | ")"
-sp2="$(echo -ne "| ")"
-sp3="$(echo -ne "|")"
 
 print_power() {
 	status="$(cat /sys/class/power_supply/ADP1/online)"
-	# | awk -F '=' '/PRESENT/ {print $2}')"
   battery="$(cat /sys/class/power_supply/BAT0/capacity)"
   timer="$(acpi -b | grep "Battery" | awk '{print $5}' | cut -c 1-5)"
   if [ "${status}" == 1 ]; then
     echo -ne "${sp}  ${battery}%"
   else
-    echo -ne "${sp} ${battery}% ${timer}"
+	  echo -ne "${sp} ${battery}% (${timer})"
   fi
 }
 
 print_wifiqual() {
   wifiessid="$(/sbin/iwconfig 2>/dev/null | grep ESSID | cut -d: -f2)"
   wifiawk="$(echo $wifiessid | awk -F',' '{gsub(/"/, "", $1); print $1}')"
-  wificut="$(echo $wifiawk | cut -d' ' -f1)"
-  echo -ne "${sp1} ${wificut}"
+  wificut="$(echo $wifiawk | cut -d' ' -f1 | cut -d'/' -f1)"
+  echo -ne "${sp} ${wificut}"
 }
 
 print_volume(){
     mix=`amixer get Master | tail -1`
     vol="$(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
     if [[ $mix == *\[off\]* ]];then
-      #red 2
-      echo -e "${sp1} OFF"
+      echo -e "${sp} OFF"
     elif [[ $mix == *\[on\]* ]]; then
-      #green 9
-      echo -e "${sp1} ${vol}% "
+      echo -e "${sp} ${vol}%"
     else
-     #yellow6
-      echo -e "${sp1} ---"
+      echo -e "${sp} ---"
     fi
 }
 
 print_datetime() {
-  datetime="$(date "+%a %d %b %H:%M")"
-  echo -ne "${sp1}${datetime}"
+  datetime="$(date "+%H:%M %a%d %b")"
+  echo -ne "${sp} ${datetime}"
 }
 
 while true; do
-# xsetroot -name "$(date +"%a %d %b  %H:%M")"
 xsetroot -name "$(print_power)$(print_wifiqual)$(print_volume)$(print_datetime)"
-#$(print_volume)
 done &
 
 setxkbmap fr
@@ -89,9 +76,5 @@ xinput disable 6
 
 
 # Start the window manager:
-#if [ -z "$DESKTOP_SESSION" -a -x /usr/bin/ck-launch-session ]; then
-#  exec ck-launch-session /usr/bin/dwm
-#else
-  exec /usr/local/bin/dwm
-#fi
+exec /usr/local/bin/dwm
 
