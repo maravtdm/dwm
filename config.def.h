@@ -29,7 +29,9 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "Firefox",  NULL,      "À propos de Mozilla Firefox" 1 << 8, 1 -1 },
 	{ "Thunderbird",  NULL,   NULL,       1 << 2,       0,           -1 },
+	{ "Thunderbird",  NULL,  "À propos de Mozilla Thunderbird", 1 << 8, 1, -1 },
 	{ "Caja",     NULL,       NULL,       1 << 3,       0,           -1 },
 };
 
@@ -63,9 +65,9 @@ static const char *termcmd[] = { "st", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *thunderbirdcmd[] = { "thunderbird", NULL };
 static const char *cajacmd[] = { "caja", NULL };
-static const char *volmcmd[] = { "pactl", "set-sink-mute", "alsa_output.pci-0000_00_1b.0.analog-stereo", "toggle", NULL};
-static const char *voldcmd[] = { "pactl", "set-sink-volume", "alsa_output.pci-0000_00_1b.0.analog-stereo", "-10%", NULL};
-static const char *volucmd[] = { "pactl", "set-sink-volume", "alsa_output.pci-0000_00_1b.0.analog-stereo", "+10%", NULL};
+static const char *volmcmd[] = { "amixer", "set", "Master", "toggle", NULL};
+static const char *voldcmd[] = { "amixer", "set", "Master", "10%-", NULL};
+static const char *volucmd[] = { "amixer", "set", "Master", "10%+", NULL};
 static const char *lockcmd[] = { "~/.config/i3/lockscreen", "off", NULL};
 
 static Key keys[] = {
@@ -75,9 +77,9 @@ static Key keys[] = {
        	{ MODKEY,                       XK_F1,		spawn,			{.v = firefoxcmd } },
 	{ MODKEY,	                XK_F2,		spawn,			{.v = thunderbirdcmd } },
 	{ MODKEY,	                XK_F3,		spawn,			{.v = cajacmd } },
-        { MODKEY,                       XK_m,		spawn,			{.v = volmcmd } },
-	{ MODKEY,                       XK_a,		spawn,			{.v = voldcmd } },
-	{ MODKEY,                       XK_z,		spawn,			{.v = volucmd } },
+        { 0,                       0x1008ff12,		spawn,			{.v = volmcmd } },
+	{ 0,                       0x1008ff11,		spawn,			{.v = voldcmd } },
+	{ 0,                       0x1008ff13,		spawn,			{.v = volucmd } },
 	{ MODKEY|ShiftMask,             XK_l,		spawn,			{.v = lockcmd } },
 	{ MODKEY,                       XK_b,		togglebar,		{0} },
 	{ MODKEY,                       XK_Right,	focusstack,		{.i = +1 } },
