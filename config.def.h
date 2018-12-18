@@ -29,14 +29,14 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "Firefox",  NULL,      "À propos de Mozilla Firefox" 1 << 8, 1 -1 },
+	{ "Firefox",  NULL,      "À propos de Mozilla Firefox", 1 << 8, 1, -1 },
 	{ "Thunderbird",  NULL,   NULL,       1 << 2,       0,           -1 },
 	{ "Thunderbird",  NULL,  "À propos de Mozilla Thunderbird", 1 << 8, 1, -1 },
 	{ "Caja",     NULL,       NULL,       1 << 3,       0,           -1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
@@ -65,10 +65,10 @@ static const char *termcmd[] = { "st", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *thunderbirdcmd[] = { "thunderbird", NULL };
 static const char *cajacmd[] = { "caja", NULL };
-static const char *volmcmd[] = { "amixer", "set", "Master", "toggle", NULL};
-static const char *voldcmd[] = { "amixer", "set", "Master", "10%-", NULL};
-static const char *volucmd[] = { "amixer", "set", "Master", "10%+", NULL};
-static const char *lockcmd[] = { "~/.config/i3/lockscreen", "off", NULL};
+static const char *volmcmd[] = { "amixer", "set", "Master", "toggle", NULL };
+static const char *voldcmd[] = { "amixer", "set", "Master", "10%-", NULL };
+static const char *volucmd[] = { "amixer", "set", "Master", "10%+", NULL };
+static const char *lockcmd[] = { "~/.config/i3/lockscreen", "off", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -78,7 +78,7 @@ static Key keys[] = {
 	{ MODKEY,	                XK_F2,		spawn,			{.v = thunderbirdcmd } },
 	{ MODKEY,	                XK_F3,		spawn,			{.v = cajacmd } },
         { 0,                       0x1008ff12,		spawn,			{.v = volmcmd } },
-	{ 0,                       XF86AudioLowerVolume,		spawn,			{.v = voldcmd } },
+	{ 0,                       0x1008ff11,		spawn,			{.v = voldcmd } },
 	{ 0,                       0x1008ff13,		spawn,			{.v = volucmd } },
 	{ MODKEY|ShiftMask,             XK_l,		spawn,			{.v = lockcmd } },
 	{ MODKEY,                       XK_b,		togglebar,		{0} },
@@ -131,4 +131,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
