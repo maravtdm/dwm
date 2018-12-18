@@ -78,7 +78,7 @@ static Key keys[] = {
 	{ MODKEY,	                XK_F2,		spawn,			{.v = thunderbirdcmd } },
 	{ MODKEY,	                XK_F3,		spawn,			{.v = cajacmd } },
         { 0,                       0x1008ff12,		spawn,			{.v = volmcmd } },
-	{ 0,                       0x1008ff11,		spawn,			{.v = voldcmd } },
+	{ 0,                       XF86AudioLowerVolume,		spawn,			{.v = voldcmd } },
 	{ 0,                       0x1008ff13,		spawn,			{.v = volucmd } },
 	{ MODKEY|ShiftMask,             XK_l,		spawn,			{.v = lockcmd } },
 	{ MODKEY,                       XK_b,		togglebar,		{0} },
