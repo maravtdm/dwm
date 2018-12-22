@@ -34,7 +34,7 @@ static const Rule rules[] = {
 	{ "Thunderbird",  NULL,   NULL,       1 << 2,       0,           -1 },
 	{ "Thunderbird",  NULL,  "À propos de Mozilla Thunderbird", 1 << 8, 1, -1 },
 	{ "Caja",     NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "Tilda",	NULL,	NULL,	1 << 8, 1, -1 },
+	{ "Tilda",	"tilda",	NULL,	0,	1,	-1 },
 };
 
 /* layout(s) */
