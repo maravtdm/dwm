@@ -1,1 +1,1 @@
-DWM config files with /home/USER/.xinitrc
+My personal dwm configuration with /home/$USER/.xinitrc
