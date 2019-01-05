@@ -72,6 +72,7 @@ static const char *termcmd[] = { "st", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *chromiumcmd[] = { "chromium", NULL };
 static const char *thunderbirdcmd[] = { "thunderbird", NULL };
+static const char *scrotcmd[] = { "import", "-screen", "~/Images/Screenshots/`date "+%Y%m%d-%T"`-screenshot.png", NULL };
 static const char *cajacmd[] = { "caja", NULL };
 static const char *volmcmd[] = { "amixer", "set", "Master", "toggle", NULL };
 static const char *voldcmd[] = { "amixer", "set", "Master", "10%-", NULL };
@@ -89,6 +90,7 @@ static Key keys[] = {
         { 0,                       0x1008ff12,		spawn,			{.v = volmcmd } },
 	{ 0,                       0x1008ff11,		spawn,			{.v = voldcmd } },
 	{ 0,                       0x1008ff13,		spawn,			{.v = volucmd } },
+	{ 0,                       0xff61,		spawn,			{.v = scrotcmd } },
 	{ MODKEY|ShiftMask,             XK_l,		spawn,			{.v = lockcmd } },
 	{ MODKEY,                       XK_b,		togglebar,		{0} },
 	{ MODKEY,                       XK_Right,	focusstack,		{.i = +1 } },
