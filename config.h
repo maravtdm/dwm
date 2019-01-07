@@ -4,7 +4,7 @@
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 1;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -15,11 +15,11 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#24476e";
+static const char col_cyan[]        = "#005577";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan },
+	[SchemeSel]  = { col_gray4, col_cyan, col_cyan },
 };
 
 /* tagging */
@@ -32,19 +32,22 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	{ "Tilda",    NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "Firefox",  NULL,      "À propos de Mozilla Firefox", 1 << 8, 1, -1 },
+	{ "Firefox Developer Edition",  NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "Firefox",  NULL,	  "À propos de Mozilla Firefox",        1 << 8,         1,     -1 },
+	{ "Firefox Developer Edition",  NULL,	  "À propos de Firefox Developer Edition",        1 << 8,         1,     -1 },
 	{ "Thunderbird",  NULL,   NULL,       1 << 2,       0,           -1 },
-	{ "Firefox Developer Edition",  NULL, "À propos de Mozilla Firefox", 1 << 8, 1, -1 },
-	{ "Thunderbird",  NULL,  "À propos de Mozilla Thunderbird", 1 << 8, 1, -1 },
+	{ "Thunderbird",  NULL,	  "À propos de Mozilla Thunderbird",    1 << 8,         1,     -1 },
 	{ "Thunderbird", NULL, "Préférences de Thunderbird", 1 << 8, 1, -1 },
 	{ "Caja",     NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "Tilda",	"tilda",	NULL,	0,	1,	-1 },
-	{ "Galculator",	"galculator",	NULL,	0,	1,	-1 },
+	{ "Solaar",   NULL,	  NULL,       0,       1,           -1 },
+	{ "Nm-connection-editor", NULL, "Connexions réseau", 0, 1, -1 },
+	{ "Thunderbird", "Msgcompose", NULL, 1 << 8, 1, -1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
@@ -66,32 +69,34 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+#include </usr/include/X11/XF86keysym.h>
+
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[] = { "st", NULL };
-static const char *firefoxcmd[] = { "firefox", NULL };
+static const char *firefoxcmd[] = { "firefox-developer-edition", NULL };
 static const char *chromiumcmd[] = { "chromium", NULL };
 static const char *thunderbirdcmd[] = { "thunderbird", NULL };
-static const char *scrotcmd[] = { "scrot", NULL };
 static const char *cajacmd[] = { "caja", NULL };
 static const char *volmcmd[] = { "amixer", "set", "Master", "toggle", NULL };
-static const char *voldcmd[] = { "amixer", "set", "Master", "10%-", NULL };
+static const char *voldcmd[] = { "amixer", "set", "Master",  "10%-", NULL };
 static const char *volucmd[] = { "amixer", "set", "Master", "10%+", NULL };
-static const char *lockcmd[] = { "~/.config/i3/lockscreen", "off", NULL };
+static const char *lockcmd[] = { "/home/david/.config/i3/lockscreen", "off", NULL };
+static const char *printcmd[] = { "escrotum", "-s", "/home/david/Images/Screenshots/%Y-%m-%d-%T-screenshot.png", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,		spawn,			{.v = dmenucmd } },
 	{ MODKEY,	                XK_Return,	spawn,			{.v = termcmd } },
-	{ MODKEY,                       XK_F1,		spawn,			{.v = firefoxcmd } },
-       	{ MODKEY,                       XK_F5,		spawn,			{.v = chromiumcmd } },
+       	{ MODKEY,                       XK_F1,		spawn,			{.v = firefoxcmd } },
 	{ MODKEY,	                XK_F2,		spawn,			{.v = thunderbirdcmd } },
 	{ MODKEY,	                XK_F3,		spawn,			{.v = cajacmd } },
-        { 0,                       0x1008ff12,		spawn,			{.v = volmcmd } },
-	{ 0,                       0x1008ff11,		spawn,			{.v = voldcmd } },
-	{ 0,                       0x1008ff13,		spawn,			{.v = volucmd } },
-	{ 0,                       0xff61,		spawn,			{.v = scrotcmd } },
+	{ MODKEY,	                XK_F5,		spawn,			{.v = chromiumcmd } },
+	{ 0,				0x1008ff12,	spawn,			{.v = volmcmd } },
+        { 0,				0x1008ff11,	spawn,			{.v = voldcmd } },
+	{ 0,				0x1008ff13,	spawn,			{.v = volucmd } },
+	{ 0,				0xff61,		spawn,			{.v = printcmd } },
 	{ MODKEY|ShiftMask,             XK_l,		spawn,			{.v = lockcmd } },
 	{ MODKEY,                       XK_b,		togglebar,		{0} },
 	{ MODKEY,                       XK_Right,	focusstack,		{.i = +1 } },
