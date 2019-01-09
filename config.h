@@ -81,9 +81,9 @@ static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *chromiumcmd[] = { "chromium", NULL };
 static const char *thunderbirdcmd[] = { "thunderbird", NULL };
 static const char *cajacmd[] = { "caja", NULL };
-static const char *volmcmd[] = { "amixer", "set", "Master", "toggle", NULL };
-static const char *voldcmd[] = { "amixer", "set", "Master",  "10%-", NULL };
-static const char *volucmd[] = { "amixer", "set", "Master", "10%+", NULL };
+static const char *volmcmd[] = { "pamixer", "-t", NULL };
+static const char *voldcmd[] = { "pamixer", "-d", "10", NULL };
+static const char *volucmd[] = { "pamixer", "-i", "10", NULL };
 static const char *lockcmd[] = { "/home/david/.config/i3/lockscreen", "off", NULL };
 static const char *printcmd[] = { "escrotum", "-s", "/home/david/Images/Screenshots/%Y-%m-%d-%T-screenshot.png", NULL };
 
