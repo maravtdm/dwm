@@ -84,6 +84,8 @@ static const char *cajacmd[] = { "caja", NULL };
 static const char *volmcmd[] = { "pamixer", "-t", NULL };
 static const char *voldcmd[] = { "pamixer", "-d", "10", NULL };
 static const char *volucmd[] = { "pamixer", "-i", "10", NULL };
+static const char *lightucmd[] = { "xbacklight", "-inc", "+10%", NULL };
+static const char *lightdcmd[] = { "xbacklight", "-dec", "-10%", NULL };
 static const char *lockcmd[] = { "/home/david/.config/i3/lockscreen", "off", NULL };
 static const char *printcmd[] = { "escrotum", "-s", "/home/david/Images/Screenshots/%Y-%m-%d-%T-screenshot.png", NULL };
 
@@ -98,6 +100,8 @@ static Key keys[] = {
 	{ 0,				0x1008ff12,	spawn,			{.v = volmcmd } },
         { 0,				0x1008ff11,	spawn,			{.v = voldcmd } },
 	{ 0,				0x1008ff13,	spawn,			{.v = volucmd } },
+	{ 0,				0x1008ff02,	spawn,			{.v = lightucmd } },
+	{ 0,				0x1008ff03,	spawn,			{.v = lightdcmd } },
 	{ 0,				0xff61,		spawn,			{.v = printcmd } },
 	{ MODKEY|ShiftMask,             XK_l,		spawn,			{.v = lockcmd } },
 	{ MODKEY,                       XK_b,		togglebar,		{0} },
