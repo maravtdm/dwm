@@ -34,7 +34,8 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Tilda",    NULL,       NULL,       0,            1,           -1 },
 	{ "Guake",    NULL,       NULL,       0,            1,           -1 },
-	{ "Galculator",    NULL,       NULL,       0,            1,           -1 },
+	{ "Galculator",    NULL,  NULL,       0,            1,           -1 },
+	{ "xfce-terminal", NULL,  NULL,	      0,	    1,		 -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Firefox Developer Edition",  NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Firefox",  NULL,	  "À propos de Mozilla Firefox",        1 << 8,         1,     -1 },
@@ -80,6 +81,7 @@ static const char *termcmd[] = { "st", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *chromiumcmd[] = { "chromium", NULL };
 static const char *thunderbirdcmd[] = { "thunderbird", NULL };
+static const char *xfcetermcmd[] = [ "xfce4-terminal --drop-down", NULL };
 static const char *cajacmd[] = { "caja", NULL };
 static const char *volmcmd[] = { "pamixer", "-t", NULL };
 static const char *voldcmd[] = { "pamixer", "-d", "10", NULL };
@@ -97,6 +99,7 @@ static Key keys[] = {
 	{ MODKEY,	                XK_F2,		spawn,			{.v = thunderbirdcmd } },
 	{ MODKEY,	                XK_F3,		spawn,			{.v = cajacmd } },
 	{ MODKEY,	                XK_F5,		spawn,			{.v = chromiumcmd } },
+	{ MODKEY,			0xb2,		spawn,			{.v = xfcetermcmd } },
 	{ 0,				0x1008ff12,	spawn,			{.v = volmcmd } },
         { 0,				0x1008ff11,	spawn,			{.v = voldcmd } },
 	{ 0,				0x1008ff13,	spawn,			{.v = volucmd } },
