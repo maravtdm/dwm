@@ -35,7 +35,6 @@ static const Rule rules[] = {
 	{ "Tilda",    NULL,       NULL,       0,            1,           -1 },
 	{ "Guake",    NULL,       NULL,       0,            1,           -1 },
 	{ "Galculator",    NULL,  NULL,       0,            1,           -1 },
-	{ "Xfce4-terminal", NULL,  NULL,	      0,	    1,		 -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Firefox Developer Edition",  NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Firefox",  NULL,	  "À propos de Mozilla Firefox",        1 << 8,         1,     -1 },
