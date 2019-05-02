@@ -32,7 +32,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Tilda",    NULL,       NULL,       0,            1,           -1 },
+	{ "xfce-terminal",    NULL,       NULL,       0,            1,           -1 },
 	{ "Guake",    NULL,       NULL,       0,            1,           -1 },
 	{ "Galculator",    NULL,  NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
@@ -88,6 +88,7 @@ static const char *lightucmd[] = { "xbacklight", "-inc", "10", NULL };
 static const char *lightdcmd[] = { "xbacklight", "-dec", "10", NULL };
 static const char *lockcmd[] = { "/home/david/.config/i3/lockscreen", "off", NULL };
 static const char *printcmd[] = { "escrotum", "-s", "/home/david/Images/Screenshots/%Y-%m-%d-%T-screenshot.png", NULL };
+static const char *xfcecmd[] = { "xfce4-terminal", "--drop-down", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -97,6 +98,7 @@ static Key keys[] = {
 	{ MODKEY,	                XK_F2,		spawn,			{.v = thunderbirdcmd } },
 	{ MODKEY,	                XK_F3,		spawn,			{.v = cajacmd } },
 	{ MODKEY,	                XK_F5,		spawn,			{.v = chromiumcmd } },
+	{ 0,				0xb2,		spawn,			{.v = xfcecmd } },
 	{ 0,				0x1008ff12,	spawn,			{.v = volmcmd } },
         { 0,				0x1008ff11,	spawn,			{.v = voldcmd } },
 	{ 0,				0x1008ff13,	spawn,			{.v = volucmd } },
