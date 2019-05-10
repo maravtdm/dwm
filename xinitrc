@@ -2,8 +2,8 @@
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
-sysresources=/etc/X11/xinit/.Xresources
-sysmodmap=/etc/X11/xinit/.Xmodmap
+sysresources=/etc/X11/xinit/Xresources
+sysmodmap=/etc/X11/xinit/Xmodmap
 
 # merge in defaults and keymaps
 
@@ -93,19 +93,20 @@ while true; do
 done &
 
 setxkbmap fr
-feh --bg-scale $HOME/.config/i3/classic.png & 
-numlockx on
-tilda &
+### Options
+#feh --bg-scale $HOME/.config/i3/classic.png & 
+#numlockx on
+#tilda &
 
-synclient TapButton2=3
-synclient TapButton3=2
-synclient VertTwoFingerScroll=1
-synclient PalmDetect=1
+#synclient TapButton2=3
+#synclient TapButton3=2
+#synclient VertTwoFingerScroll=1
+#synclient PalmDetect=1
 
-# Touchpad off
-xinput disable 16
-xinput disable 17
-# Power button off
-xinput disable 6
+### Touchpad off
+#xinput disable 16
+#xinput disable 17
+### Power button off
+#xinput disable 6
 
-exec /home/marav/.config/dwm/startdwm
+exec $HOME/.config/dwm/startdwm
