@@ -81,6 +81,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[] = { "st", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
+static const char *vivaldicmd[] = { "vivaldi", NULL };
 static const char *chromiumcmd[] = { "chromium", NULL };
 static const char *thunderbirdcmd[] = { "thunderbird", NULL };
 static const char *cajacmd[] = { "caja", NULL };
@@ -97,7 +98,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,		spawn,			{.v = dmenucmd } },
 	{ MODKEY,	                XK_Return,	spawn,			{.v = termcmd } },
-       	{ MODKEY,                       XK_F1,		spawn,			{.v = firefoxcmd } },
+       	{ MODKEY,                       XK_F1,		spawn,			{.v = vivaldicmd } },
 	{ MODKEY,	                XK_F2,		spawn,			{.v = thunderbirdcmd } },
 	{ MODKEY,	                XK_F3,		spawn,			{.v = cajacmd } },
 	{ MODKEY,	                XK_F5,		spawn,			{.v = chromiumcmd } },
