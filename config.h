@@ -103,6 +103,7 @@ static Key keys[] = {
 	{ MODKEY,	                XK_F2,		spawn,			{.v = thunderbirdcmd } },
 	{ MODKEY,	                XK_F3,		spawn,			{.v = cajacmd } },
 	{ MODKEY,	                XK_F5,		spawn,			{.v = chromiumcmd } },
+	{ MODKEY,	                XK_F6,		spawn,			{.v = firefoxcmd } },
 	{ 0,				0xb2,		spawn,			{.v = xfcecmd } },
 	{ 0,				0x1008ff12,	spawn,			{.v = volmcmd } },
         { 0,				0x1008ff11,	spawn,			{.v = voldcmd } },
