@@ -1,3 +1,3 @@
 git add --all .
-git commit -m update_20190919
+git commit -m update_`date "+%Y%m%d-%T"`
 git push
