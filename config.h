@@ -112,8 +112,8 @@ static Key keys[] = {
 	{ 0,				0x1008ff13,	spawn,			{.v = volucmd } },
 	{ 0,				0x1008ff02,	spawn,			{.v = lightucmd } },
 	{ 0,				0x1008ff03,	spawn,			{.v = lightdcmd } },
-	{ 0,				0xff61,		spawn,			{.v = printcmd } },
-/*	{ 0,				XK_Print,	spawn,			{.v = printcmd } },*/
+/*	{ 0,				0xff61,		spawn,			{.v = printcmd } },*/
+	{ 0,				XK_Print,	spawn,			{.v = printcmd } },
 	{ MODKEY|ShiftMask,             XK_l,		spawn,			{.v = lockcmd } },
 	{ MODKEY,                       XK_b,		togglebar,		{0} },
 	{ MODKEY,                       XK_Right,	focusstack,		{.i = +1 } },
