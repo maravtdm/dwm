@@ -38,6 +38,7 @@ static const Rule rules[] = {
 	{ "Galculator",    NULL,  NULL,       0,            1,           -1 },
 	{ "Chromium",  NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Vivaldi",  NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "Brave-browser",  NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Firefox Developer Edition",  NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Firefox",  NULL,	  "À propos de Mozilla Firefox",        1 << 8,         1,     -1 },
