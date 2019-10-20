@@ -93,8 +93,9 @@ static const char *volucmd[] = { "pamixer", "-i", "10", NULL };
 static const char *lightucmd[] = { "xbacklight", "-inc", "10", NULL };
 static const char *lightdcmd[] = { "xbacklight", "-dec", "10", NULL };
 static const char *lockcmd[] = { "/home/david/.config/i3/lockscreen", "off", NULL };
-/*static const char *printcmd[] = { "import", "-screen", "/home/marav/Images/Screenshots/`date -I`_screenshot.png", NULL }; */
-static const char *printcmd[] = { "scrot", "-s", "$f", "/home/marav/Images/Screenshots/`date -I`_screenshot.png", NULL };
+/*static const char *printcmd[] = { "import", "-screen", "/home/marav/Images/Screenshots/`date +'%F-%R'`_screenshot.png", NULL };*/
+static const char *printcmd[] = { "scrot", "-s", "/home/marav/Images/Screenshots/%Y-%m-%d-%s_$wx$h.jpg", NULL };
+/*%Y%m%d-%H:%M'`.png", "-e mv $f /home/marav/Images/Screenshots/", NULL };*/
 static const char *xfcecmd[] = { "xfce4-terminal", "--drop-down", NULL };
 
 static Key keys[] = {
@@ -114,6 +115,7 @@ static Key keys[] = {
 	{ 0,				0x1008ff03,	spawn,			{.v = lightdcmd } },
 	{ 0,				0xff61,		spawn,			{.v = printcmd } },
 	{ 0,				XK_Print,	spawn,			{.v = printcmd } },
+	{ MODKEY|ShiftMask,		XK_p,		spawn,			{.v = printcmd } },
 	{ MODKEY|ShiftMask,             XK_l,		spawn,			{.v = lockcmd } },
 	{ MODKEY,                       XK_b,		togglebar,		{0} },
 	{ MODKEY,                       XK_Right,	focusstack,		{.i = +1 } },
