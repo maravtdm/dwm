@@ -94,7 +94,7 @@ static const char *lightucmd[] = { "xbacklight", "-inc", "10", NULL };
 static const char *lightdcmd[] = { "xbacklight", "-dec", "10", NULL };
 static const char *lockcmd[] = { "/home/david/.config/i3/lockscreen", "off", NULL };
 /*static const char *printcmd[] = { "import", "-screen", "/home/marav/Images/Screenshots/`date -I`_screenshot.png", NULL }; */
-static const char *printcmd[] = { "scrot", "-s", "-e", "mv", "$f", "/home/marav/Images/Screenshots/", NULL };
+static const char *printcmd[] = { "scrot", "-s", "$f", "/home/marav/Images/Screenshots/`date -I`_screenshot.png", NULL };
 static const char *xfcecmd[] = { "xfce4-terminal", "--drop-down", NULL };
 
 static Key keys[] = {
