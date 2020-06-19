@@ -101,10 +101,10 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,		spawn,			{.v = dmenucmd } },
 	{ MODKEY,	                XK_Return,	spawn,			{.v = termcmd } },
-	{ MODKEY,	                XK_F1,		spawn,			{.v = bravecmd } },
+	{ MODKEY,	                XK_F1,		spawn,			{.v = firefoxcmd } },
 	{ MODKEY,	                XK_F2,		spawn,			{.v = thunderbirdcmd } },
 	{ MODKEY,	                XK_F3,		spawn,			{.v = pcmanfmcmd } },
-	{ MODKEY,	                XK_F4,		spawn,			{.v = firefoxcmd } },
+	{ MODKEY,	                XK_F4,		spawn,			{.v = bravecmd } },
 	{ MODKEY,	                XK_F5,		spawn,			{.v = chromiumcmd } },
 	{ 0,				0xb2,		spawn,			{.v = xfcecmd } },
 	{ 0,				0x1008ff12,	spawn,			{.v = volmcmd } },
