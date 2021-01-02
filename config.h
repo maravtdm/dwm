@@ -81,7 +81,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[] = { "st", NULL };
+static const char *termcmd[] = { "termite", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 /*static const char *bravecmd[] = { "cliqz", NULL };*/
 static const char *bravecmd[] = { "brave", NULL };
@@ -112,7 +112,7 @@ static Key keys[] = {
 	{ 0,				0x1008ff13,	spawn,			{.v = volucmd } },
 	{ 0,				0x1008ff02,	spawn,			{.v = lightucmd } },
 	{ 0,				0x1008ff03,	spawn,			{.v = lightdcmd } },
-	{ 0,				XK_Print,	spawn,			SHCMD("scrot ~/Images/Screenshots/screenshot-$(date '+%Y%m%d_%H%M%S').jpg") },
+	{ 0,				0xff61,		spawn,			SHCMD("scrot ~/Images/Screenshots/screenshot-$(date '+%Y%m%d_%H%M%S').jpg") },
 	{ MODKEY|ShiftMask,             XK_l,		spawn,			{.v = lockcmd } },
 	{ MODKEY,                       XK_b,		togglebar,		{0} },
 	{ MODKEY,                       XK_Right,	focusstack,		{.i = +1 } },
