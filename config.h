@@ -46,7 +46,7 @@ static const Rule rules[] = {
 	{ "Cliqz",	NULL,		"About Cliqz",		1 << 1,		1,	-1 },
 	{ "Xfce4-terminal", "xfce4-terminal", NULL,			1 << 9,		1,	-1 },
 	{ "Thunderbird", NULL, "Préférences de Thunderbird", 1 << 8, 1, -1 },
-	{ "Caja",     NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "Thunar",     NULL,       NULL,       1 << 3,       0,           -1 },
 	{ "Pcmanfm",     NULL,       NULL,       1 << 3,       0,           -1 },
 	{ "Solaar",   NULL,	  NULL,       0,       1,           -1 },
 	{ "Nm-connection-editor", NULL, "Connexions réseau", 0, 1, -1 },
